@@ -7,21 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Calculator
 {
     public partial class Cal : Form
     {
-        double FNum;
         string op;
-        double SNum;
-        double Result;
+        int result;
+        int value1;
+        int value2;
         public Cal()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       private void button1_Click(object sender, EventArgs e)
         {
             int x = 1;
            this.textBox1.Text += x;
@@ -57,44 +58,58 @@ namespace Calculator
 
         private void b_plus_Click(object sender, EventArgs e)
         {
-            FNum = Con
+           
             
             this.textBox1.Text += "+";
             op = "+";
+           
 
         }
 
         private void b_minus_Click(object sender, EventArgs e)
         {
 
-            FNum = Convert.ToDouble(textBox1.Text);
-         
-            textBox1.Text += "-";
-            SecondNumber = Convert.ToDouble(textBox1.Text);
+           
+            this.textBox1.Text += "-";
             op = "-";
+           
         }
 
         private void equals_Click(object sender, EventArgs e)
         {
-            double SecondNumber;
-            double Result;
 
-            SecondNumber = Convert.ToDouble(textBox1.Text);
-
+            string s1 = textBox1.Text;
             if (op == "+")
             {
-                Result = (FNum + SecondNumber);
-                textBox1.Text = Convert.ToString(Result);
-                
+                string[] array = s1.Split(new string[] { "+" }, StringSplitOptions.RemoveEmptyEntries);
+
+                 value1 = Convert.ToInt32(array[0]);
+                 value2 = Convert.ToInt32(array[1]);
+                result = value1 + value2;
             }
-            if (op == "-")
+            else if(op == "-")
             {
-                Result = (FNum - SecondNumber);
-                textBox1.Text = Convert.ToString(Result);
-                FNum = Result;
+                string[] array = s1.Split(new string[] { "-" }, StringSplitOptions.RemoveEmptyEntries);
+
+                 value1 = Convert.ToInt32(array[0]);
+                 value2 = Convert.ToInt32(array[1]);
+                 result = value1 - value2;
+
+
+            }
+            else
+            {
+                MessageBox.Show("enter a valid operation");
             }
 
+            textBox1.Text = Convert.ToString(result);
+            
+        }
 
+        private void Clear_box_Click(object sender, EventArgs e)
+        {
+
+            textBox1.Clear();
 
         }
     }

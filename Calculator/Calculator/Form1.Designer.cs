@@ -38,41 +38,42 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Lucida Sans Unicode", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(165, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 16);
+            this.label1.Size = new System.Drawing.Size(112, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username";
             // 
             // username_text
             // 
-            this.username_text.Location = new System.Drawing.Point(299, 88);
+            this.username_text.Location = new System.Drawing.Point(299, 95);
             this.username_text.Name = "username_text";
-            this.username_text.Size = new System.Drawing.Size(100, 20);
+            this.username_text.Size = new System.Drawing.Size(140, 20);
             this.username_text.TabIndex = 1;
+            this.username_text.TextChanged += new System.EventHandler(this.username_text_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Lucida Sans Unicode", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(165, 173);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 15);
+            this.label2.Size = new System.Drawing.Size(107, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "Password";
             // 
             // password_text
             // 
-            this.password_text.Location = new System.Drawing.Point(299, 168);
+            this.password_text.Location = new System.Drawing.Point(299, 178);
             this.password_text.Name = "password_text";
             this.password_text.PasswordChar = '*';
-            this.password_text.Size = new System.Drawing.Size(100, 20);
+            this.password_text.Size = new System.Drawing.Size(140, 20);
             this.password_text.TabIndex = 3;
             // 
             // Login
             // 
-            this.Login.Location = new System.Drawing.Point(309, 229);
+            this.Login.Location = new System.Drawing.Point(331, 233);
             this.Login.Name = "Login";
             this.Login.Size = new System.Drawing.Size(75, 23);
             this.Login.TabIndex = 4;

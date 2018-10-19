@@ -37,6 +37,7 @@
             this.equals = new System.Windows.Forms.Button();
             this.b_minus = new System.Windows.Forms.Button();
             this.b_plus = new System.Windows.Forms.Button();
+            this.Clear_box = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // B1
@@ -134,11 +135,22 @@
             this.b_plus.UseVisualStyleBackColor = true;
             this.b_plus.Click += new System.EventHandler(this.b_plus_Click);
             // 
+            // Clear_box
+            // 
+            this.Clear_box.Location = new System.Drawing.Point(330, 258);
+            this.Clear_box.Name = "Clear_box";
+            this.Clear_box.Size = new System.Drawing.Size(119, 38);
+            this.Clear_box.TabIndex = 9;
+            this.Clear_box.Text = "Clear";
+            this.Clear_box.UseVisualStyleBackColor = true;
+            this.Clear_box.Click += new System.EventHandler(this.Clear_box_Click);
+            // 
             // Cal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Clear_box);
             this.Controls.Add(this.b_plus);
             this.Controls.Add(this.b_minus);
             this.Controls.Add(this.equals);
@@ -166,5 +178,6 @@
         private System.Windows.Forms.Button equals;
         private System.Windows.Forms.Button b_minus;
         private System.Windows.Forms.Button b_plus;
+        private System.Windows.Forms.Button Clear_box;
     }
 }

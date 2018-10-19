@@ -41,5 +41,10 @@ namespace Calculator
             
                     
         }
+
+        private void username_text_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
