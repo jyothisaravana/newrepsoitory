@@ -44,11 +44,43 @@ namespace Forms
             s1.Open();
             SqlCommand com = s1.CreateCommand();
             com.CommandType = CommandType.Text;
-            com.CommandText = "Update Employee Set Id = '206'where ";
+            com.CommandText = "Update Employee Set Name = @p1 , Salary = @s1 WHERE Id = @p2 ";
+            com.Parameters.AddWithValue("@p2", ID.Text);
+            com.Parameters.AddWithValue("@p1", Name.Text.Trim());
+            com.Parameters.AddWithValue("@s1", Salary.Text.Trim());
             com.ExecuteNonQuery();
             s1.Close();
             MessageBox.Show("Data updated");
 
+        }
+
+        private void Display_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("Select * from Employee", s1);
+            s1.Open();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+            s1.Close();
+
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("Delete Employee where Id=@p1", s1);
+            s1.Open();
+            cmd.Parameters.AddWithValue("@p1", ID.Text.Trim()); ;
+            cmd.ExecuteNonQuery();
+            s1.Close();
+            MessageBox.Show("Record deleted successfully");
+
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -88,6 +88,7 @@
             this.Display.TabIndex = 4;
             this.Display.Text = "Display";
             this.Display.UseVisualStyleBackColor = true;
+            this.Display.Click += new System.EventHandler(this.Display_Click);
             // 
             // Delete
             // 
@@ -97,6 +98,7 @@
             this.Delete.TabIndex = 5;
             this.Delete.Text = "Delete";
             this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
             // Exit
             // 
@@ -106,6 +108,7 @@
             this.Exit.TabIndex = 6;
             this.Exit.Text = "Exit";
             this.Exit.UseVisualStyleBackColor = true;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // ID
             // 
@@ -163,7 +166,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Save);
-           // this.Name = "Form1";
+            //this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
