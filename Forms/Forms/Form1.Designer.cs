@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Save = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -40,7 +41,15 @@
             this.Salary = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Sel_image = new System.Windows.Forms.Button();
+            this.Save_img = new System.Windows.Forms.Button();
+            this.openfile = new System.Windows.Forms.OpenFileDialog();
+            this.Img_view = new System.Windows.Forms.PictureBox();
+            this.Show = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Img_view)).BeginInit();
             this.SuspendLayout();
             // 
             // Save
@@ -65,9 +74,9 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(469, 91);
+            this.dataGridView1.Location = new System.Drawing.Point(324, 73);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(236, 178);
             this.dataGridView1.TabIndex = 2;
             // 
             // Update
@@ -82,7 +91,7 @@
             // 
             // Display
             // 
-            this.Display.Location = new System.Drawing.Point(384, 293);
+            this.Display.Location = new System.Drawing.Point(342, 293);
             this.Display.Name = "Display";
             this.Display.Size = new System.Drawing.Size(75, 23);
             this.Display.TabIndex = 4;
@@ -92,7 +101,7 @@
             // 
             // Delete
             // 
-            this.Delete.Location = new System.Drawing.Point(545, 293);
+            this.Delete.Location = new System.Drawing.Point(485, 293);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(75, 23);
             this.Delete.TabIndex = 5;
@@ -102,7 +111,7 @@
             // 
             // Exit
             // 
-            this.Exit.Location = new System.Drawing.Point(670, 293);
+            this.Exit.Location = new System.Drawing.Point(249, 366);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(75, 23);
             this.Exit.TabIndex = 6;
@@ -149,11 +158,71 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Salary";
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(642, 73);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(171, 20);
+            this.textBox1.TabIndex = 12;
+            // 
+            // Sel_image
+            // 
+            this.Sel_image.Location = new System.Drawing.Point(632, 132);
+            this.Sel_image.Name = "Sel_image";
+            this.Sel_image.Size = new System.Drawing.Size(79, 38);
+            this.Sel_image.TabIndex = 13;
+            this.Sel_image.Text = "Select Image";
+            this.Sel_image.UseVisualStyleBackColor = true;
+            this.Sel_image.Click += new System.EventHandler(this.Sel_image_Click);
+            // 
+            // Save_img
+            // 
+            this.Save_img.Location = new System.Drawing.Point(738, 132);
+            this.Save_img.Name = "Save_img";
+            this.Save_img.Size = new System.Drawing.Size(75, 38);
+            this.Save_img.TabIndex = 14;
+            this.Save_img.Text = "Save image";
+            this.Save_img.UseVisualStyleBackColor = true;
+            this.Save_img.Click += new System.EventHandler(this.Save_img_Click);
+            // 
+            // openfile
+            // 
+            this.openfile.FileName = "Upload";
+            // 
+            // Img_view
+            // 
+            this.Img_view.Location = new System.Drawing.Point(642, 197);
+            this.Img_view.Name = "Img_view";
+            this.Img_view.Size = new System.Drawing.Size(171, 151);
+            this.Img_view.TabIndex = 16;
+            this.Img_view.TabStop = false;
+            // 
+            // Show
+            // 
+            this.Show.Location = new System.Drawing.Point(678, 378);
+            this.Show.Name = "Show";
+            this.Show.Size = new System.Drawing.Size(75, 23);
+            this.Show.TabIndex = 17;
+            this.Show.Text = "Show";
+            this.Show.UseVisualStyleBackColor = true;
+            this.Show.Click += new System.EventHandler(this.Show_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(982, 450);
+            this.Controls.Add(this.Show);
+            this.Controls.Add(this.Img_view);
+            this.Controls.Add(this.Save_img);
+            this.Controls.Add(this.Sel_image);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Salary);
@@ -170,6 +239,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Img_view)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,6 +259,13 @@
         private System.Windows.Forms.TextBox Salary;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button Sel_image;
+        private System.Windows.Forms.Button Save_img;
+        private System.Windows.Forms.OpenFileDialog openfile;
+        private System.Windows.Forms.PictureBox Img_view;
+        private System.Windows.Forms.Button Show;
     }
 }
 

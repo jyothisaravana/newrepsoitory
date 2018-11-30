@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
+
 
 namespace Forms
 {
     public partial class Form1 : Form
     {
+        int i = 2;
         SqlConnection s1 = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = E:\2016cse220\newrepsoitory\Forms\Forms\Properties\Database1.mdf; Integrated Security = True");
         public Form1()
         {
@@ -81,6 +84,59 @@ namespace Forms
         private void Exit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Sel_image_Click(object sender, EventArgs e)
+        {
+
+            if (openfile.ShowDialog() == DialogResult.OK)
+            {
+                textBox1.Text = openfile.FileName;
+
+            }
+        }
+
+        private void Save_img_Click(object sender, EventArgs e)
+        {
+            
+            s1.Open();
+            Byte[] mypic = File.ReadAllBytes(openfile.FileName);
+            SqlCommand cm = new SqlCommand("insert into Image2 values(" + i + ",@pic)", s1);
+            //cm.CommandType = CommandType.Text;
+
+            SqlParameter pr = new SqlParameter("@pic", SqlDbType.VarBinary, mypic.Length, ParameterDirection.Input, false, 0, 0, null, DataRowVersion.Current, mypic);
+            cm.Parameters.Add(pr);
+            try
+            {
+                cm.ExecuteNonQuery();
+
+            }
+            catch (Exception e2)
+            {
+                MessageBox.Show("change id");
+            }
+            MessageBox.Show("saved");
+            i = i++;
+            s1.Close();
+
+
+
+
+
+
+        }
+
+        private void Show_Click(object sender, EventArgs e)
+        {
+            s1.Open();
+            SqlDataAdapter s = new SqlDataAdapter("select photo from Image2 where id='" + textBox1.Text + "'", s1);
+            DataTable dt = new DataTable();
+            s.Fill(dt);
+            byte[] mydata = new byte[0];
+            mydata = (byte[])dt.Rows[0][1];
+            MemoryStream ms = new MemoryStream(mydata);
+            Img_view.Image = Image.FromStream(ms);
+            s1.Close();
         }
     }
 }
