@@ -98,27 +98,13 @@ namespace Forms
 
         private void Save_img_Click(object sender, EventArgs e)
         {
-            
             s1.Open();
-            Byte[] mypic = File.ReadAllBytes(openfile.FileName);
-            SqlCommand cm = new SqlCommand("insert into Image2 values(" + i + ",@pic)", s1);
-            //cm.CommandType = CommandType.Text;
-
-            SqlParameter pr = new SqlParameter("@pic", SqlDbType.VarBinary, mypic.Length, ParameterDirection.Input, false, 0, 0, null, DataRowVersion.Current, mypic);
-            cm.Parameters.Add(pr);
-            try
-            {
-                cm.ExecuteNonQuery();
-
-            }
-            catch (Exception e2)
-            {
-                MessageBox.Show("change id");
-            }
-            MessageBox.Show("saved");
-            i = i++;
+            byte[] imgData = File.ReadAllBytes(textBox1.Text);
+            SqlCommand cmd = new SqlCommand("insert into Image(id,photo) values (1,@photo)",s1) ;
+            SqlParameter sp = cmd.Parameters.AddWithValue("@photo", imgData);
+            sp.DbType = DbType.Binary;
+            cmd.ExecuteNonQuery();
             s1.Close();
-
 
 
 
@@ -129,14 +115,22 @@ namespace Forms
         private void Show_Click(object sender, EventArgs e)
         {
             s1.Open();
-            SqlDataAdapter s = new SqlDataAdapter("select photo from Image2 where id='" + textBox1.Text + "'", s1);
+            SqlDataAdapter s = new SqlDataAdapter("select photo from Image where id='" + textBox1.Text + "'", s1);
             DataTable dt = new DataTable();
             s.Fill(dt);
             byte[] mydata = new byte[0];
-            mydata = (byte[])dt.Rows[0][1];
+            mydata = (byte[])dt.Rows[0][0];
             MemoryStream ms = new MemoryStream(mydata);
             Img_view.Image = Image.FromStream(ms);
             s1.Close();
+            MessageBox.Show("Your image is saved successfully");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+
+
         }
     }
 }
